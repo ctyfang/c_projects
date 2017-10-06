@@ -1,0 +1,7 @@
+﻿  p1.c
+c:\users\carter\desktop\lets_learn_c\project euler\euler\euler\p1.c(41): warning C4244: 'initializing': conversion from 'double' to 'unsigned long', possible loss of data
+c:\users\carter\desktop\lets_learn_c\project euler\euler\euler\p1.c(72): warning C4013: 'malloc' undefined; assuming extern returning int
+c:\users\carter\desktop\lets_learn_c\project euler\euler\euler\p1.c(89): warning C4013: 'free' undefined; assuming extern returning int
+c:\users\carter\desktop\lets_learn_c\project euler\euler\euler\p1.c(159): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  euler.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\Project Euler\euler\Debug\euler.exe
+  euler.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\Project Euler\euler\Debug\euler.pdb (Partial PDB)

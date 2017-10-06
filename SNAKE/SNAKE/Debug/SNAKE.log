@@ -1,0 +1,4 @@
+﻿  main.c
+c:\users\carter\source\repos\snake\snake\main.c(181): warning C4101: 'i': unreferenced local variable
+  SNAKE.vcxproj -> C:\Users\Carter\source\repos\SNAKE\Debug\SNAKE.exe
+  SNAKE.vcxproj -> C:\Users\Carter\source\repos\SNAKE\Debug\SNAKE.pdb (Partial PDB)
