@@ -1,0 +1,12 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(59): warning C4013: 'hash' undefined; assuming extern returning int
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(65): warning C4047: '==': 'char *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(66): warning C4047: 'return': 'hashEntry *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(86): warning C4047: '=': 'char *' differs in levels of indirection from 'char'
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(97): warning C4047: '=': 'char *' differs in levels of indirection from 'char'
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(111): warning C4047: '!=': 'char *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(115): warning C4047: 'return': 'int' differs in levels of indirection from 'hashEntry *'
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(119): warning C4047: 'initializing': 'hashEntry *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\hashbasics\hashbasics\main.c(145): warning C4047: '=': 'hashEntry *' differs in levels of indirection from 'int'
+  HashBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\HashBasics\Debug\HashBasics.exe
+  HashBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\HashBasics\Debug\HashBasics.pdb (Partial PDB)

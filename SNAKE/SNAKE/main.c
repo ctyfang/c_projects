@@ -6,6 +6,8 @@
 #include <conio.h>
 #include <assert.h>
 
+// HIGHSCORES: 66
+
 #define ROWS 20
 #define COLS 50
 char MAP[ROWS][COLS];
@@ -259,6 +261,7 @@ int updateSnake() {
 			return 0;
 		}
 
+		// Move outside ?
 		// Iterate through turning nodes
 		while (currPt) {
 			// Check if body segment is over turning node
