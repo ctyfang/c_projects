@@ -1,0 +1,21 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(155): warning C4047: '==': 'char *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(156): warning C4047: 'return': 'hashEntry *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(179): warning C4047: '=': 'char *' differs in levels of indirection from 'char'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(190): warning C4047: '=': 'char *' differs in levels of indirection from 'char'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(207): warning C4047: '!=': 'char *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(279): warning C4047: '=': 'char' differs in levels of indirection from 'char *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(288): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(290): warning C4133: '=': incompatible types - from 'listItem *' to 'listitem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(291): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(319): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(337): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(344): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(350): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(399): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(403): warning C4133: '=': incompatible types - from 'listitem *' to 'listItem *'
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(324): warning C4101: 'newParent': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(271): warning C4101: 'index': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\huffman_compression\huffman_compression\main.c(69): warning C4716: 'insertNode': must return a value
+  Huffman_Compression.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\Huffman_Compression\Debug\Huffman_Compression.exe
+  Huffman_Compression.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\Huffman_Compression\Debug\Huffman_Compression.pdb (Partial PDB)

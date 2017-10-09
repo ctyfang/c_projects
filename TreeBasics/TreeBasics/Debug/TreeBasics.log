@@ -1,0 +1,4 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\treebasics\treebasics\main.c(37): warning C4716: 'insertNode': must return a value
+  TreeBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\TreeBasics\Debug\TreeBasics.exe
+  TreeBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\TreeBasics\Debug\TreeBasics.pdb (Partial PDB)
