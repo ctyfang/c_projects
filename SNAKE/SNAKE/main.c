@@ -11,8 +11,8 @@
 #define ROWS 20
 #define COLS 50
 char MAP[ROWS][COLS];
-int snakeLen = 2;
-int numNodes = 0;
+int snakeLen;
+int numNodes;
 
 // segment of snake
 typedef struct bodySegments{
@@ -32,7 +32,13 @@ typedef struct turnPoints{
 }turnPoint;
 
 turnPoint* firstTurn = NULL;
+numNodes = 0;
 
+enum MAPCHAR {
+	snake_body,
+	border,
+	food
+};
 
 void initMap() {
 	int i, j;
@@ -62,8 +68,18 @@ void drawMap() {
 	}
 }
 
-void initSnake() {
+void drawSnake() {
+	bodySegment *currSeg = head;
+	int i;
 
+	for (i = 0; i < snakeLen; i++) {
+		MAP[currSeg->y][currSeg->x] = '$';
+		currSeg = currSeg->next;
+	}
+}
+
+void initSnake() {
+	snakeLen = 2;
 	head = (bodySegment*)malloc(sizeof(bodySegment));
 	tail = (bodySegment*)malloc(sizeof(bodySegment));
 
@@ -126,7 +142,6 @@ void plantNode(char keyPressed) {
 	turnPoint* currPt = firstTurn;
 
 	if (currPt == NULL) {
-		free(firstTurn);
 		firstTurn = newPt;
 	}
 	else{
@@ -168,12 +183,12 @@ int inBorder(x, y) {
 void spawnFood() {
 	int x, y;
 
-	x = rand() % 50;
-	y = rand() % 20;
+	x = rand() % COLS;
+	y = rand() % ROWS;
 
 	while (inSnake(x, y) || inBorder(x,y)) {
-		x = rand() % 50;
-		y = rand() % 20;
+		x = rand() % COLS;
+		y = rand() % ROWS;
 	}
 
 	MAP[y][x] = 'O';
@@ -181,29 +196,49 @@ void spawnFood() {
 
 int checkCollision() {
 	int i,x,y;
-	bodySegment* currSeg = head,*compSeg = head;
+	bodySegment *currSeg = head->next;
 
 	while(currSeg) {
-		x = currSeg->x;
-		y = currSeg->y;
-
-		while(compSeg) {
-			if (currSeg != compSeg) {
-				if (x == compSeg->x && y == compSeg->y)
-					return 1;
-			}
-
-			compSeg = compSeg->next;
+		if (head->x == currSeg->x && head->y == currSeg->y){
+			return 1;
 		}
-		currSeg = currSeg->next;
+		else
+			currSeg = currSeg->next;
 	}
-
+	
 	return 0;
+}
+
+void checkSegBounds(bodySegment* currSeg) {
+	if (inBorder(currSeg->x, currSeg->y)) {
+		if (currSeg->x == 0)
+			currSeg->x = COLS - 2;
+		else if (currSeg->x == 49)
+			currSeg->x = 1;
+		else if (currSeg->y == 0)
+			currSeg->y = ROWS - 2;
+		else
+			currSeg->y = 1;
+	}
+}
+
+void checkEating() {
+	if (MAP[head->y][head->x] == 'O') {
+		//tail1 = tail;
+		incSnakeLen();
+		//tail2 = tail;
+		//assert(tail1 != tail2);
+	}
+}
+
+void checkRedirect(bodySegment *last, bodySegment *curr) {
+	if (last->direction != curr->direction)
+		curr->direction = last->direction;
 }
 int updateSnake() {
 	int i, x, y, currNodes;
 	char dir;
-	bodySegment *currSeg = head, *tail1, *tail2;
+	bodySegment *currSeg = head, *tail1, *tail2, *lastSeg = head;
 	turnPoint *currPt, *lastPt;
 	currNodes = numNodes;
 
@@ -231,38 +266,29 @@ int updateSnake() {
 			(currSeg->x) = (currSeg->x) - 1;
 			break;
 		default:
-			break;
+			printf("Snake updating error!\n");
+			return;
 		}
 
-		// If curr segment is head, check if snake is eating
+		// If on head seg, check if eating
 		if (currSeg == head) {
-			// If eating, update length
-			if (MAP[currSeg->y][currSeg->x] == 'O') {
-				tail1 = tail;
-				incSnakeLen();
-				tail2 = tail;
-				assert(tail1 != tail2);
-			}
+			checkEating();
 		}
-
+		/*
+		else {
+			checkRedirect(lastSeg,currSeg);
+		}
+		*/
 		// Check if out-of-bounds
-		if (inBorder(currSeg->x, currSeg->y)) {
-			if (currSeg->x == 0)
-				currSeg->x = COLS - 2;
-			else if (currSeg->x == 49)
-				currSeg->x = 1;
-			else if (currSeg->y == 0)
-				currSeg->y = ROWS - 2;
-			else
-				currSeg->y = 1;
-		}
-		
+		checkSegBounds(currSeg);
+
+		// Check if there was collision
 		if (checkCollision()) {
 			return 0;
 		}
 
-		// Move outside ?
-		// Iterate through turning nodes
+		// Redirect snake segments by iterating through turning nodes
+		
 		while (currPt) {
 			// Check if body segment is over turning node
 			if (((currPt->x) == (currSeg->x)) && ((currPt->y) == currSeg->y)) {
@@ -283,15 +309,11 @@ int updateSnake() {
 				currPt = currPt->next;
 			}
 		}
-
+		
+		lastSeg = currSeg;
 		currSeg = currSeg->next;
 	}
-
-	currSeg = head;
-	for (i = 0; i < snakeLen; i++) {
-		MAP[currSeg->y][currSeg->x] = '$';
-		currSeg = currSeg->next;
-	}
+	drawSnake();
 
 	return 1;
 }
