@@ -1,5 +1,8 @@
-#include <stdlib.h>
+// Implementing a queue with arrays
+
 /*
+#include <stdlib.h>
+
 typedef struct queue{
 	int capacity;
 	int front;
@@ -7,6 +10,11 @@ typedef struct queue{
 	int *arr;
 } queue;
 
+
+// Initialize queue with its capacity
+// Input: Size of the queue
+// Side-Effects: Allocates memory for the new queue struct and the array
+// Output: Pointer to the new queue
 queue *initQueue(int size){
 	queue* newQ = (queue*)malloc(sizeof(queue));
 	newQ->capacity = size;
@@ -16,6 +24,10 @@ queue *initQueue(int size){
 	return newQ;
 }
 
+// Check if queue is full
+// Input: Pointer to queue
+// Side-Effects: none
+// Output: 1 if queue is full. 0 if not full.
 int isFull(queue *q){
 	if (q->num == q->capacity)
 		return 1;
@@ -23,12 +35,20 @@ int isFull(queue *q){
 		return 0;
 }
 
+// Check if queue is empty
+// Input: Pointer to queue
+// Side-Effects: none
+// Output: 1 if queue is empty. 0 if not empty.
 int isEmpty(queue *q){
 	if (q->num == 0)
 		return 1;
 	else return 0;
 }
 
+// Add a value to the queue
+// Input: Pointer to queue, value to add
+// Side-Effects: Value is added to the queue
+// Output: 1 if successful, 0 if failed (queue full)
 int enQueue(queue *q, int val){
 	// if full return 0
 	if (isFull(q))
@@ -40,6 +60,10 @@ int enQueue(queue *q, int val){
 	}
 }
 
+// Remove a value from the queue
+// Input: Pointer to queue
+// Side-Effects: Front position of the queue is adjusted. Num queue elements decremented
+// Output: 1 if successfully removed. 0 if failed (queue empty)
 int deQueue(queue *q){
 	if (isEmpty(q))
 		return 0;
@@ -50,6 +74,10 @@ int deQueue(queue *q){
 	}
 }
 
+// Return front value from the queue
+// Input: Pointer to queue
+// Side-Effects: None
+// Output: Value at the front of the queue
 int peek(queue *q){
 	if (isEmpty(q))
 		return 0; // throw an error actually
