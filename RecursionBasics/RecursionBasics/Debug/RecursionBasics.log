@@ -1,0 +1,4 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\recursionbasics\recursionbasics\main.c(68): warning C4715: 'linSearch': not all control paths return a value
+  RecursionBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\RecursionBasics\Debug\RecursionBasics.exe
+  RecursionBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\RecursionBasics\Debug\RecursionBasics.pdb (Partial PDB)
