@@ -1,0 +1,4 @@
+﻿  mazesolver.c
+c:\users\carter\google drive\mech3\cpsc259\cpsc259_lab4_takehomeframework\cpsc259_lab4_takehomeframework\mazesolver.c(288): warning C4018: '<': signed/unsigned mismatch
+  CPSC259_Lab4_TakeHomeFramework.vcxproj -> C:\Users\Carter\Google Drive\Mech3\CPSC259\CPSC259_Lab4_TakeHomeFramework\Debug\Maze Solver.exe
+  CPSC259_Lab4_TakeHomeFramework.vcxproj -> C:\Users\Carter\Google Drive\Mech3\CPSC259\CPSC259_Lab4_TakeHomeFramework\Debug\Maze Solver.pdb (Partial PDB)
