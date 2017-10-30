@@ -1,0 +1,6 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\linkedlistsbasics\linkedlistsbasics\main.c(20): warning C4101: 'next': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\linkedlistsbasics\linkedlistsbasics\main.c(46): warning C4101: 'next': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\linkedlistsbasics\linkedlistsbasics\main.c(65): warning C4715: 'removeNode': not all control paths return a value
+  LinkedListsBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\LinkedListsBasics\Debug\LinkedListsBasics.exe
+  LinkedListsBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\LinkedListsBasics\Debug\LinkedListsBasics.pdb (Partial PDB)
