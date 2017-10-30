@@ -1,4 +1,6 @@
 ﻿  main.c
-c:\users\carter\desktop\lets_learn_c\treebasics\treebasics\main.c(37): warning C4716: 'insertNode': must return a value
+c:\users\carter\desktop\lets_learn_c\treebasics\treebasics\main.c(69): warning C4101: 'newNode': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\treebasics\treebasics\main.c(93): warning C4715: 'recursiveInsert': not all control paths return a value
+c:\users\carter\desktop\lets_learn_c\treebasics\treebasics\main.c(128): warning C4715: 'recursiveFind': not all control paths return a value
   TreeBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\TreeBasics\Debug\TreeBasics.exe
   TreeBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\TreeBasics\Debug\TreeBasics.pdb (Partial PDB)

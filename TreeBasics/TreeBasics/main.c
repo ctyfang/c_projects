@@ -8,13 +8,90 @@ typedef struct node {
 	struct node *one;
 }node;
 
-node* insertNode(int);
-node* findNode(int);
-node* dltNode(int);
+node* createTree(void);
+node* insertNode(node*, int);
+node* findNode(node*, int);
+int traverse(node);
+node* dltNode(node*, int);
 
-node *root = NULL;
+node *createTree(void) {
+	return NULL;
+}
 
-node* insertNode(int val) {
+node *createNode(int val) {
+	node *newNode = malloc(sizeof(node));
+	newNode->zero = NULL;
+	newNode->one = NULL;
+	newNode->val = val;
+	return newNode;
+}
+
+// Traversal methods visit every node in a tree recursively
+// Each traversal method has its own applications, considering that the tree is structured
+void visit(node *nd) {
+	printf("%i\n", nd->val);
+}
+
+// Traverse from left -> right
+void inOrder(node *tree) {
+	if (tree != NULL) {
+		inOrder(tree->zero);
+		visit(tree);
+		inOrder(tree->one);
+	}
+}
+
+// Traverse from top -> bottom. First node to be visited is ROOT
+void preOrder(node *tree) {
+	if (tree != NULL) {
+		visit(tree);
+		preOrder(tree->zero);
+		preOrder(tree->one);
+	}
+}
+
+// Traverse from bottom -> top. Last node to be visited is ROOT
+void postOrder(node *tree) {
+	if (tree != NULL) {
+		postOrder(tree->zero);
+		postOrder(tree->one);
+		visit(tree);
+	}
+}
+
+// Level-order traversal
+void levelOrder(node *tree) {
+
+}
+
+// As the tree becomes more balanced, insertion, search, removal is in O(logn) time
+node* recursiveInsert(node *root, int val) {
+	node *newNode;
+	// If given an empty tree, new node is now the tree
+	if (root == NULL) {
+		node* newNode = (node*)malloc(sizeof(node));
+		newNode->zero = NULL;
+		newNode->one = NULL;
+		newNode->val = val;
+		return newNode;
+	}
+	// Otherwise, find it's correct position
+	else {
+		if (val > root->val) {
+			if (root->one != NULL)
+				recursiveInsert(root->one, val);
+			else
+				root->one = createNode(val);
+		}
+		else {
+			if (root->zero != NULL)
+				recursiveInsert(root->zero, val);
+			else
+				root->zero = createNode(val);
+		}
+	}
+}
+node* insertNode(node *root, int val) {
 	node* currNode = root, *parent = root, **nextPtr = &root;
 	node* newNode = (node*)malloc(sizeof(node));
 	newNode->zero = NULL;
@@ -34,9 +111,22 @@ node* insertNode(int val) {
 	}
 	
 	*nextPtr = newNode;
+	return root;
 }
 
-node* findNode(int val) {
+int recursiveFind(node *nd, int val) {
+	if (nd == NULL)
+		return 0;
+	else if (nd->val == val)
+		return 1;
+	else {
+		if (val > nd->val)
+			recursiveFind(nd->one, val);
+		else
+			recursiveFind(nd->zero, val);
+	}
+}
+node *findNode(node *root, int val) {
 	node* currNode = root;
 	
 	while (currNode != NULL) {
@@ -53,10 +143,10 @@ node* findNode(int val) {
 	return NULL;
 }
 
-node* dltNode(int val) {
+node* dltNode(node *root, int val) {
 	node *currNode = root, *parent = root;
 
-	if (!findNode(val)) {
+	if (!findNode(root, val)) {
 		printf("Node not found in tree.\n");
 		return NULL;
 	}
@@ -79,10 +169,18 @@ node* dltNode(int val) {
 }
 
 void main() {
-	insertNode(5);
-	insertNode(10);
-	insertNode(3);
-
-	findNode(3);
-	dltNode(3);
+	node *root = createTree();
+	root = recursiveInsert(root, 3);
+	recursiveInsert(root, 5);
+	recursiveInsert(root, 2);
+	/*
+	root = insertNode(root, 3);
+	insertNode(root, 1);
+	insertNode(root, 5);
+	insertNode(root, 10);
+	insertNode(root, 6);
+	*/
+	inOrder(root);
+	//findNode(3);
+	//dltNode(3);
 }
