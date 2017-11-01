@@ -2,6 +2,9 @@
 // Every node in this tree will have a max of two children. It will be a binary tree.
 #include <stdlib.h>
 #include <stdio.h>
+#define TRUE 1
+#define FALSE 0
+
 typedef struct node {
 	int val;
 	struct node *zero;
@@ -12,7 +15,7 @@ node* createTree(void);
 node* insertNode(node*, int);
 node* findNode(node*, int);
 int traverse(node);
-node* dltNode(node*, int);
+void dltNode(node*, int);
 
 node *createTree(void) {
 	return NULL;
@@ -143,29 +146,84 @@ node *findNode(node *root, int val) {
 	return NULL;
 }
 
-node* dltNode(node *root, int val) {
-	node *currNode = root, *parent = root;
+// Removing nodes
+void dltNode(node *root, int val) {
+	node *currNode = root, *parent = root, *successor;
+	int isLeft;
 
 	if (!findNode(root, val)) {
 		printf("Node not found in tree.\n");
 		return NULL;
 	}
 
-	while (currNode != NULL) {
-		if (currNode->val == val) {
-			free(currNode);
-			currNode = NULL;
-			break;
+	// Ignore case of root
+	while (currNode != NULL && currNode->val != val) {
+		parent = currNode;
+		if (val < currNode->val) {
+			currNode = currNode->zero;
+			isLeft = TRUE;
 		}
 		else {
-			parent = currNode;
-			if (val > currNode->val)
-				currNode = currNode->one;
-			else
-				currNode = currNode->zero;
+			currNode = currNode->one;
+			isLeft = FALSE;
 		}
 	}
-	return parent;
+
+	// Out of the loop
+	if (currNode == NULL)
+		return;
+	else {
+		// Only left child
+		if (currNode->zero != NULL && currNode->one == NULL) {
+			if (isLeft == TRUE) {
+				parent->zero = currNode->zero;
+			}
+			else {
+				parent->one = currNode->zero;
+			}
+			free(currNode);
+			return;
+		}
+		// Only right child
+		else if (currNode->zero == NULL && currNode->one != NULL) {
+			if (isLeft == TRUE) {
+				parent->zero = currNode->one;
+			}
+			else {
+				parent->one = currNode->one;
+			}
+			free(currNode);
+			return;
+		}
+		// Both
+		else if (currNode->zero != NULL && currNode->one != NULL){
+			// find predecessor in LEFT subtree
+			node *succ = currNode->zero, *succp;
+
+			while (succ != NULL && succ->one != NULL) {
+				succp = succ;
+				succ = succ->one;
+			}
+
+			// fix links at predecessor
+			int temp = succ->val;
+			dltNode(root, temp);
+
+			// replace node with predecessor
+			currNode->val = temp;
+			return;
+		}
+		else {
+			if (isLeft == TRUE) {
+				parent->zero = NULL;
+			}
+			else {
+				parent->one = NULL;
+			}
+			free(currNode);
+			return;
+		}
+	}
 }
 
 void main() {
@@ -173,6 +231,11 @@ void main() {
 	root = recursiveInsert(root, 3);
 	recursiveInsert(root, 5);
 	recursiveInsert(root, 2);
+	recursiveInsert(root, 7);
+	recursiveInsert(root, 1);
+	recursiveInsert(root, 10);
+	recursiveInsert(root, 6);
+	dltNode(root, 7);
 	/*
 	root = insertNode(root, 3);
 	insertNode(root, 1);
