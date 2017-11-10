@@ -14,12 +14,14 @@ int findMin(int arr[], int size) {
 // Complexity: O(n^2)
 // Pros: Performs better when auxiliary memory is limited
 // Cons: Inefficient on large lists
+// n(n-1)/2 comparisons. First pass is n, second is n-1, then n-2... 
 void selection_sort(int arr[], int size) {
 	//int sortedArr = (int*)malloc(sizeof(int)*size);
 	int i, j, min, minInd, temp;
 	
 	// find min
 	for (i = 0; i < size - 1; i++) {
+		// find min
 		min = arr[i];
 		minInd = i;
 		for (j = i + 1; j < size; j++) {
@@ -28,6 +30,7 @@ void selection_sort(int arr[], int size) {
 				min = arr[j];
 			}
 		}
+		// swap with current index
 		temp = arr[i];
 		arr[i] = arr[minInd];
 		arr[minInd] = temp;
@@ -71,10 +74,89 @@ void bubble_sort(int arr[], int size) {
 		}
 	}
 }
+
+// Heap Sort Helper Functions ------------------
+
+// Input: Array to-be heapified, size of head, index of root
+// Side-Effect: Recursively heapify the tree rooted at index
+void heapifyMaxArr(int arr[], int size, int ind) {
+	// if left child ind < sizeof(arr) 
+	//		compare values with arr[ind] and swap if needed
+	//		heapifyMax(arr, size, leftChild)
+	// if right child ind < sizeof(arr)
+	//		compare values with arr[ind] and swap if needed
+	//		heapifyMax(arr, size, rightChild)
+	int leftInd = ind * 2 + 1, rightInd = ind * 2 + 2, maxInd;
+	int temp;
+
+	if (leftInd < size && arr[leftInd] > arr[ind])
+		maxInd = leftInd;
+	else
+		maxInd = ind;
+
+	if (rightInd < size && arr[rightInd] > arr[maxInd])
+		maxInd = rightInd;
+
+	if (maxInd != ind) {
+		temp = arr[maxInd];
+		arr[maxInd] = arr[ind];
+		arr[ind] = temp;
+		heapifyMaxArr(arr, size, maxInd);
+	}
+	else {
+		return;
+	}
+	// check if swap is needed with right
+}
+
+// Input: Array to-be heapified, size of the array
+// Side-Effects: Build heap from an array
+void buildHeap(int arr[], int size) {
+	int i, ind = (size - 1) / 2;
+
+	for (i = ind; i >= 0; i--) {
+		heapifyMaxArr(arr, size, i);
+	}
+}
+
+// Input: Heap, size of heap
+// Side-Effect: Remove root, re-heapify the array
+// Return: Root value
+int removeRoot(int arr[], int size) {
+	// replace root with last leaf
+	int root = arr[0];
+	arr[0] = arr[size - 1];
+	size--;
+
+	// heapify down
+	heapifyMaxArr(arr, size, 0);
+	return root;
+}
+
+// Heap sort
+// Complexity: O(nlogn)
+void heap_sort(int arr[], int size) {
+	buildHeap(arr, size);
+	int *sortedArr = (int*)malloc(sizeof(int)*size);
+	int i;
+
+	for (i = 0; i < size; i++) {
+		sortedArr[i] = removeRoot(arr, size - i);
+	}
+
+	for (i = 0; i < size; i++) {
+		arr[i] = sortedArr[i];
+	}
+}
+
 void main() {
-	int arr[] = { 5,4,3,2,1 };
+	int arr[] = { 1,2,3,4,5 };
 
 	//selection_sort(arr, 5);
 	//insertion_sort(arr, 5);
 	//bubble_sort(arr, 5);
+	heap_sort(arr, 5);
+
+	system("PAUSE");
+	return;
 }
