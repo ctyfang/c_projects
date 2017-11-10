@@ -1,3 +1,4 @@
 ﻿  main.c
+c:\users\carter\desktop\lets_learn_c\binaryheapbasics\binaryheapbasics\main.c(79): warning C4716: 'removeMin': must return a value
   BinaryHeapBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\BinaryHeapBasics\Debug\BinaryHeapBasics.exe
   BinaryHeapBasics.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\BinaryHeapBasics\Debug\BinaryHeapBasics.pdb (Partial PDB)

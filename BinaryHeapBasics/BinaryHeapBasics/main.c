@@ -53,6 +53,30 @@ minHeap *initMinHeap(int capacity) {
 	return heap;
 }
 
+// Input: none
+// Side-Effects: Removes root, replaces it with highest index item, heapifies down
+// Output: root value
+int removeMin(minHeap *heap) {
+	int newRtVal = heap->arr[heap->numItems - 1];
+	heap->numItems--;
+	int ind = 0;
+	int leftChild = heap->arr[ind * 2 + 1], rightChild = heap->arr[ind * 2 + 2];
+
+	while (newRtVal > leftChild || newRtVal > rightChild) {
+		if (newRtVal > leftChild) {
+			heap->arr[ind] = leftChild;
+			heap->arr[ind * 2 + 1] = newRtVal;
+			ind = ind * 2 + 1;
+		}
+		else {
+			heap->arr[ind] = rightChild;
+			heap->arr[ind * 2 + 2] = newRtVal;
+			ind = ind * 2 + 2; 
+		}
+		leftChild = heap->arr[ind * 2 + 1];
+		rightChild = heap->arr[ind * 2 + 2];
+	}
+}
 // Input: pointer to heap, value
 // Side-Effects: insert value at the last position, percolate it upwards iteratively
 // Output: none
@@ -203,7 +227,68 @@ void recursiveInsertMax(maxHeap *heap, int val) {
 	heap->numItems++;
 }
 
+void heapifyMaxArr(int arr[], int size, int ind) {
+	// if left child ind < sizeof(arr) 
+	//		compare values with arr[ind] and swap if needed
+	//		heapifyMax(arr, size, leftChild)
+	// if right child ind < sizeof(arr)
+	//		compare values with arr[ind] and swap if needed
+	//		heapifyMax(arr, size, rightChild)
+	int leftInd = ind * 2 + 1, rightInd = ind * 2 + 2, maxInd;
+	int temp;
+
+	if (leftInd < size && arr[leftInd] > arr[ind])
+		maxInd = leftInd;
+	else
+		maxInd = ind;
+
+	if (rightInd < size && arr[rightInd] > arr[maxInd])
+		maxInd = rightInd;
+
+	if (maxInd != ind) {
+		temp = arr[maxInd];
+		arr[maxInd] = arr[ind];
+		arr[ind] = temp;
+		heapifyMaxArr(arr, size, maxInd);
+	}
+	else {
+		return;
+	}
+	// check if swap is needed with right
+}
+
+
+void buildHeap(int arr[], int size) {
+	int i, ind = (size - 1) / 2;
+
+	for (i = ind;  i >= 0; i--) {
+		heapifyMaxArr(arr, size, i);
+	}
+}
+
+int removeRoot(int arr[], int size) {
+	// replace root with last leaf
+	int root = arr[0];
+	arr[0] = arr[size - 1];
+	size--;
+
+	// heapify down
+	heapifyMaxArr(arr, size, 0);
+	return root;
+}
+int *heapSort(int arr[], int size) {
+	buildHeap(arr, size);
+	int *sortedArr = (int*)malloc(sizeof(int)*size);
+	int i;
+
+	for (i = 0; i < size; i++) {
+		sortedArr[i] = removeRoot(arr, size-i);
+	}
+
+	return sortedArr;
+}
 void main() {
+	/*
 	int nums[] = { 34, 76, 11, 32, 73, 9, 50, 65, 41, 27, 3, 88 };
 	int k = 12;
 
@@ -223,6 +308,7 @@ void main() {
 		recursiveInsertMax(maxH, nums[i]);
 	}
 
+	//removeMin(minH);
 	printf("MIN HEAP:\n");
 	for (i = 0; i < k; i++){
 		printf("%i, ", minH->arr[i]);
@@ -234,7 +320,15 @@ void main() {
 		printf("%i, ", maxH->arr[i]);
 	}
 	printf("\n");
+	*/
 
+	int nums[] = {7,27,96,48,58,23,21,76,87,44};
+	int *sorted = heapSort(nums, 10);
+	int i;
+	for (i = 0; i < 10; i++) {
+		printf("%i, ", sorted[i]);
+	}
+	printf("\n");
 	system("PAUSE");
 }
 
