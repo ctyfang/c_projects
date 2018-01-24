@@ -1,0 +1,11 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(200): warning C4101: 'y': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(200): warning C4101: 'x': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(200): warning C4101: 'i': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(277): warning C4033: 'updateSnake' must return a value
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(246): warning C4101: 'tail1': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(244): warning C4101: 'currSegs': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(246): warning C4101: 'tail2': unreferenced local variable
+c:\users\carter\desktop\lets_learn_c\snake\snake\main.c(332): warning C4715: 'updateSnake': not all control paths return a value
+  SNAKE.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\SNAKE\Debug\SNAKE.exe
+  SNAKE.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\SNAKE\Debug\SNAKE.pdb (Partial PDB)

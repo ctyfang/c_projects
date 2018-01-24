@@ -62,12 +62,8 @@ void postOrder(node *tree) {
 	}
 }
 
-// Level-order traversal
-void levelOrder(node *tree) {
-
-}
-
 // As the tree becomes more balanced, insertion, search, removal is in O(logn) time
+// Worst case is O(n)
 node* recursiveInsert(node *root, int val) {
 	node *newNode;
 	// If given an empty tree, new node is now the tree
@@ -94,13 +90,16 @@ node* recursiveInsert(node *root, int val) {
 		}
 	}
 }
+
 node* insertNode(node *root, int val) {
+	// Create new node
 	node* currNode = root, *parent = root, **nextPtr = &root;
 	node* newNode = (node*)malloc(sizeof(node));
 	newNode->zero = NULL;
 	newNode->one = NULL;
 	newNode->val = val;
 
+	// Find its correct position in the tree
 	while (currNode != NULL) {
 		//parent = currNode;
 		if (val > currNode->val) {
@@ -117,6 +116,8 @@ node* insertNode(node *root, int val) {
 	return root;
 }
 
+// Searches the ordered binary tree for a value
+// Value can either be found, or not found (reached null)
 int recursiveFind(node *nd, int val) {
 	if (nd == NULL)
 		return 0;
@@ -129,9 +130,12 @@ int recursiveFind(node *nd, int val) {
 			recursiveFind(nd->zero, val);
 	}
 }
+
+// Iterative implementation of search
 node *findNode(node *root, int val) {
 	node* currNode = root;
 	
+	// Search until we hit null or until the value is found
 	while (currNode != NULL) {
 		if (currNode->val == val)
 			return currNode;
@@ -146,7 +150,6 @@ node *findNode(node *root, int val) {
 	return NULL;
 }
 
-// Removing nodes
 void dltNode(node *root, int val) {
 	node *currNode = root, *parent = root, *successor;
 	int isLeft;
@@ -156,7 +159,8 @@ void dltNode(node *root, int val) {
 		return NULL;
 	}
 
-	// Ignore case of root
+	// Find the position of the node
+	// Ignore case of root.
 	while (currNode != NULL && currNode->val != val) {
 		parent = currNode;
 		if (val < currNode->val) {
@@ -200,20 +204,21 @@ void dltNode(node *root, int val) {
 			// find predecessor in LEFT subtree
 			node *succ = currNode->zero, *succp;
 
-			while (succ != NULL && succ->one != NULL) {
+			while (succ != NULL) {
 				succp = succ;
 				succ = succ->one;
 			}
 
 			// fix links at predecessor
 			int temp = succ->val;
+			// assumes unique values in the tree
 			dltNode(root, temp);
 
-			// replace node with predecessor
+			// replace node with predecessor. No need to free currNode because we replaced its value.
 			currNode->val = temp;
 			return;
 		}
-		else {
+		else { // Otherwise no children
 			if (isLeft == TRUE) {
 				parent->zero = NULL;
 			}
@@ -226,6 +231,16 @@ void dltNode(node *root, int val) {
 	}
 }
 
+// Compact recursive implementation of find
+int recursiveFind2(node *nd, int val) {
+	if (nd == NULL)
+		return FALSE;
+	else if (nd->val == val)
+		return TRUE;
+	else
+		return recursiveFind2(nd->zero, val) || recursiveFind2(nd->one, val);
+}
+
 void main() {
 	node *root = createTree();
 	root = recursiveInsert(root, 3);
@@ -235,7 +250,8 @@ void main() {
 	recursiveInsert(root, 1);
 	recursiveInsert(root, 10);
 	recursiveInsert(root, 6);
-	dltNode(root, 7);
+	recursiveFind2(root, 5);
+	dltNode(root, 3);
 	/*
 	root = insertNode(root, 3);
 	insertNode(root, 1);

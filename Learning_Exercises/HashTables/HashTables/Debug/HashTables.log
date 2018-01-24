@@ -1,0 +1,9 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\hashtables\hashtables\main.c(36): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\carter\desktop\lets_learn_c\hashtables\hashtables\main.c(40): warning C4013: 'strlen' undefined; assuming extern returning int
+c:\users\carter\desktop\lets_learn_c\hashtables\hashtables\main.c(70): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\carter\desktop\lets_learn_c\hashtables\hashtables\main.c(75): warning C4716: 'insertQuadProbe': must return a value
+c:\users\carter\desktop\lets_learn_c\hashtables\hashtables\main.c(90): warning C4716: 'insertDoubleHash': must return a value
+c:\users\carter\desktop\lets_learn_c\hashtables\hashtables\main.c(63): warning C4716: 'insertLinProbe': must return a value
+  HashTables.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\HashTables\Debug\HashTables.exe
+  HashTables.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\HashTables\Debug\HashTables.pdb (Partial PDB)

@@ -1,0 +1,12 @@
+﻿  main.c
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(195): warning C4047: 'function': 'int *' differs in levels of indirection from 'int'
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(195): warning C4024: 'merge': different types for formal and actual parameter 1
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(202): warning C4047: 'function': 'int' differs in levels of indirection from 'int *'
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(202): warning C4024: 'msort': different types for formal and actual parameter 1
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(205): warning C4028: formal parameter 2 different from declaration
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(205): warning C4028: formal parameter 3 different from declaration
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(205): warning C4029: declared formal parameter list different from definition
+c:\users\carter\desktop\lets_learn_c\sorters\sorters\main.c(205): warning C4273: 'qsort': inconsistent dll linkage
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\corecrt_search.h(56): note: see previous definition of 'qsort'
+  Sorters.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\Sorters\Debug\Sorters.exe
+  Sorters.vcxproj -> C:\Users\Carter\Desktop\lets_learn_c\Sorters\Debug\Sorters.pdb (Partial PDB)
