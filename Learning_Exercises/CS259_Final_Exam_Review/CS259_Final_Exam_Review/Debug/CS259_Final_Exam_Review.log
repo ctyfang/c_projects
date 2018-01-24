@@ -1,5 +1,0 @@
-﻿  main.c
-main.obj : error LNK2019: unresolved external symbol _initializeHashTable referenced in function _main
-main.obj : error LNK2019: unresolved external symbol _insert referenced in function _main
-main.obj : error LNK2019: unresolved external symbol _search referenced in function _main
-C:\Users\Carter\Desktop\lets_learn_c\CS259_Final_Exam_Review\Debug\CS259_Final_Exam_Review.exe : fatal error LNK1120: 3 unresolved externals
